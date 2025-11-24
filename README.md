@@ -13,9 +13,9 @@
     Zhen Xing<sup></sup>,</span>
     Haoran Chen<sup></sup>,</span>
     Shiwei Shen<sup></sup>,</span>
-    Jiaqi Leng<sup></sup>,</span>
+    Jiaqi Leng<sup></sup>,<br/></span>
     <a href="https://zxwu.azurewebsites.net/" target="_blank">Zuxuan Wu</a><sup>&dagger;</sup>,</span>
-    Yu-Gang Jiang<sup></sup>,</span>
+    Yu-Gang Jiang<sup></sup></span>
 </div>
 
 <div>
