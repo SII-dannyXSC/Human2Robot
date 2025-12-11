@@ -1,0 +1,16 @@
+__pycache__/
+pretrained_weights/
+pretrained_weights
+output/
+.venv/
+mlruns/
+data/
+
+*.pth
+*.pt
+*.pkl
+*.bin
+
+test/
+configs/prompts/local_animation.yaml
+configs/instances

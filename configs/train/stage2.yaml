@@ -1,0 +1,110 @@
+data:
+  train_bs: 1
+  train_width: 424 
+  train_height: 240 
+  meta_paths:
+    # - "./data/grab_both_cubes_v1_meta.json"
+
+    - "./data/grab_cube_meta.json"
+    - "./data/grab_cube2_v1_meta.json"
+
+    # - "./data/grab_cup_meta.json"
+    # - "./data/grab_cup_v1_meta.json"
+
+    # - "./data/grab_pencil1_v1_meta.json"
+    # - "./data/grab_pencil2_v1_meta.json"
+
+    # - "./data/grab_to_plate1_and_back_v1_meta.json"
+
+    # - "./data/grab_to_plate1_meta.json"
+    # - "./data/grab_to_plate1_v1_meta.json"
+    # - "./data/grab_to_plate2_and_back_v1_meta.json"
+
+    # - "./data/grab_to_plate2_and_pull_v1_meta.json"
+    # - "./data/grab_to_plate2_meta.json"
+    # - "./data/grab_to_plate2_v1_meta.json"
+
+    # - "./data/grab_two_cubes1_meta.json"
+    # - "./data/grab_two_cubes2_meta.json"
+    # - "./data/grab_two_cubes2_v1_meta.json"
+
+    # - "./data/gripper_meta.json"
+    # - "./data/pull_plate_grab_cube_meta.json"
+
+    # - "./data/pull_plate_meta.json"
+    # - "./data/pull_plate_v1_meta.json"
+
+    # - "./data/push_box_common_v1_meta.json"
+    # - "./data/push_box_meta.json"
+    # - "./data/push_box_random_v1_meta.json"
+    # - "./data/push_box_two_v1_meta.json"
+
+    # - "./data/push_plate_meta.json"
+    # - "./data/push_plate_v1_meta.json"
+  sample_rate: 4 
+  n_sample_frames: 30
+
+solver:
+  gradient_accumulation_steps: 1
+  mixed_precision: 'fp16'
+  # mixed_precision: 'no'
+  enable_xformers_memory_efficient_attention: True 
+  gradient_checkpointing: True 
+  max_train_steps: 100000
+  max_grad_norm: 1.0
+  # lr
+  learning_rate: 1e-5
+  scale_lr: False 
+  lr_warmup_steps: 1
+  lr_scheduler: 'constant'
+
+  # optimizer
+  use_8bit_adam: True 
+  adam_beta1: 0.9
+  adam_beta2: 0.999
+  adam_weight_decay:  1.0e-2
+  adam_epsilon: 1.0e-8
+
+val:
+  # validation_steps: 1
+  validation_steps: 200
+
+
+noise_scheduler_kwargs:
+  num_train_timesteps: 1000
+  beta_start:          0.00085
+  beta_end:            0.012
+  beta_schedule:       "linear"
+  steps_offset:        1
+  clip_sample:         false
+
+base_model_path: './pretrained_weights/stable-diffusion-v1-5'
+vae_model_path: './pretrained_weights/sd-vae-ft-mse'
+image_encoder_path: './pretrained_weights/sd-image-variations-diffusers/image_encoder'
+mm_path: './pretrained_weights/animatediff/mm_sd_v15_v2.ckpt'
+# motion_module_path: "./pretrained_weights/motion_module-11875.pth"
+
+# weight_dtype: 'fp16'  # [fp16, fp32]
+weight_dtype: 'fp32'  # [fp16, fp32]
+uncond_ratio: 0.1
+noise_offset: 0.05
+snr_gamma: 5.0
+enable_zero_snr: True 
+stage1_ckpt_dir: './pretrained_weights/'
+stage1_ckpt_step: 17970
+
+seed: 12580
+resume_from_checkpoint: ''
+# resume_from_checkpoint: 'latest'
+checkpointing_steps: 2000
+exp_name: 'whole_ckpt_stage2'
+# output_dir: '/data/human2robot/v1_margin0_bound90_424_240_total' 
+output_dir: '/data/danny/project/ckpt/h2r'
+
+stats_path: "./data/grab_stats.pkl"
+action_loss_weight: 1
+
+test_cases:
+  - "./data/val/episode_1.hdf5"
+  - "./data/val/episode_2.hdf5"
+  - "./data/val/episode_3.hdf5"
