@@ -132,11 +132,11 @@ accelerate launch train_stage_2.py --config configs/train/stage2.yaml
 If you use this project or dataset, please cite:
 
 ```
-@article{xie2025human2robot,
+@inproceedings{xie2025human2robot,
   title={Human2robot: Learning robot actions from paired human-robot videos},
   author={Xie, Sicheng and Cao, Haidong and Weng, Zejia and Xing, Zhen and Chen, Haoran and Shen, Shiwei and Leng, Jiaqi and Wu, Zuxuan and Jiang, Yu-Gang},
-  journal={arXiv preprint arXiv:2502.16587},
-  year={2025}
+  booktitle={Proceedings of the AAAI Conference on Artificial Intelligence},
+  year={2026}
 }
 ```
 
